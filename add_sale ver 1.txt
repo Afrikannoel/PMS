@@ -1,0 +1,219 @@
+<?php
+session_start();
+include 'db.php'; // Include the database connection
+
+// Initialize the cart
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = []; // Initialize the cart as an empty array
+}
+
+// Handle drug search
+$searchResults = [];
+if (isset($_POST['search'])) {
+    $searchTerm = $_POST['search_term'];
+    $stmt = $pdo->prepare("SELECT * FROM drugs WHERE drug_name LIKE :search_term");
+    $stmt->execute([':search_term' => '%' . $searchTerm . '%']);
+    $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Handle adding to cart
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
+    $drugId = $_POST['drug_id'];
+    $quantity = $_POST['quantity'][$drugId];
+
+    // Check drug availability
+    $stmt = $pdo->prepare("SELECT * FROM drugs WHERE drug_id = :drug_id");
+    $stmt->execute([':drug_id' => $drugId]);
+    $drug = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($drug && $drug['quantity_in_stock'] >= $quantity) {
+        // Add to cart
+        $cart = $_SESSION['cart'];
+        $totalPrice = $quantity * $drug['selling_price'];
+
+        // Check if the drug already exists in the cart
+        if (isset($cart[$drugId])) {
+            $cart[$drugId]['quantity'] += $quantity;
+            $cart[$drugId]['total_price'] += $totalPrice;
+        } else {
+            $cart[$drugId] = [
+                'drug_id' => $drug['drug_id'],
+                'drug_name' => $drug['drug_name'],
+                'quantity' => $quantity,
+                'unit_price' => $drug['selling_price'],
+                'total_price' => $totalPrice
+            ];
+        }
+
+        $_SESSION['cart'] = $cart;
+
+        // Update inventory
+        $updateStmt = $pdo->prepare("UPDATE drugs SET quantity_in_stock = quantity_in_stock - :quantity WHERE drug_id = :drug_id");
+        $updateStmt->execute([
+            ':quantity' => $quantity,
+            ':drug_id' => $drugId
+        ]);
+    } else {
+        echo "<script>alert('Not enough stock available for this drug.');</script>";
+    }
+}
+
+// Handle removing a drug from the cart
+if (isset($_POST['remove_from_cart'])) {
+    $drugIdToRemove = $_POST['drug_id'];
+    $quantityToRemove = $_SESSION['cart'][$drugIdToRemove]['quantity'];
+
+    // Update stock
+    $updateStmt = $pdo->prepare("UPDATE drugs SET quantity_in_stock = quantity_in_stock + :quantity WHERE drug_id = :drug_id");
+    $updateStmt->execute([
+        ':quantity' => $quantityToRemove,
+        ':drug_id' => $drugIdToRemove
+    ]);
+
+    unset($_SESSION['cart'][$drugIdToRemove]);
+}
+
+// Handle editing a drug quantity in the cart
+if (isset($_POST['edit_cart'])) {
+    $drugIdToEdit = $_POST['drug_id'];
+    $newQuantity = $_POST['new_quantity'];
+
+    // Check availability
+    $stmt = $pdo->prepare("SELECT * FROM drugs WHERE drug_id = :drug_id");
+    $stmt->execute([':drug_id' => $drugIdToEdit]);
+    $drug = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($drug) {
+        $currentQuantity = $_SESSION['cart'][$drugIdToEdit]['quantity'];
+        
+        // Calculate difference
+        $quantityDifference = $newQuantity - $currentQuantity;
+
+        if ($drug['quantity_in_stock'] + quantityDifference >= 0) {
+            // Update cart
+            $cart = $_SESSION['cart'];
+            $cart[$drugIdToEdit]['quantity'] = $newQuantity;
+            $cart[$drugIdToEdit]['total_price'] = $newQuantity * $cart[$drugIdToEdit]['unit_price'];
+            $_SESSION['cart'] = $cart;
+
+            // Update inventory
+            $updateStmt = $pdo->prepare("UPDATE drugs SET quantity_in_stock = quantity_in_stock - :quantity_difference WHERE drug_id = :drug_id");
+            $updateStmt->execute([
+                ':quantity_difference' => $quantityDifference,
+                ':drug_id' => $drugIdToEdit
+            ]);
+        } else {
+            echo "<script>alert('Not enough stock available for the new quantity.');</script>";
+        }
+    }
+}
+
+// Clear the cart
+if (isset($_POST['clear_cart'])) {
+    $_SESSION['cart'] = []; // Clear the cart
+}
+
+// Assign the cart to a variable for use in the HTML
+$cart = $_SESSION['cart'];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Sale</title>
+    <link rel="stylesheet" href="add_sale.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Add Sale</h1>
+
+        <!-- Search Drug Form -->
+        <form action="" method="POST">
+            <input type="text" name="search_term" placeholder="Search for drugs..." required>
+            <button type="submit" name="search">Search</button>
+        </form>
+
+        <!-- Display Search Results -->
+        <h2>Search Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Drug Name</th>
+                    <th>Batch Number</th>
+                    <th>Expiry Date</th>
+                    <th>Description</th>
+                    <th>Quantity in Stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($searchResults as $drug): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($drug['drug_name']); ?></td>
+                        <td><?php echo htmlspecialchars($drug['batch_number']); ?></td>
+                        <td><?php echo htmlspecialchars($drug['expiry_date']); ?></td>
+                        <td><?php echo htmlspecialchars($drug['description']); ?></td>
+                        <td><?php echo htmlspecialchars($drug['quantity_in_stock']); ?></td>
+                        <td>
+                            <form action="" method="POST">
+                                <input type="hidden" name="drug_id" value="<?php echo $drug['drug_id']; ?>">
+                                <input type="number" name="quantity[<?php echo $drug['drug_id']; ?>]" min="1" required>
+                                <button type="submit" name="add_to_cart">Add to Cart</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <!-- Display Cart -->
+        <h2>Your Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Drug Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($cart as $drugId => $item): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($item['drug_name']); ?></td>
+                        <td>
+                            <form action="" method="POST" style="display:inline;">
+                                <input type="hidden" name="drug_id" value="<?php echo $drugId; ?>">
+                                <input type="number" name="new_quantity" value="<?php echo $item['quantity']; ?>" min="1" required>
+                                <button type="submit" name="edit_cart">Edit</button>
+                            </form>
+                        </td>
+                        <td><?php echo number_format($item['unit_price'], 2); ?></td>
+                        <td><?php echo number_format($item['total_price'], 2); ?></td>
+                        <td>
+                            <form action="" method="POST" style="display:inline;">
+                                <input type="hidden" name="drug_id" value="<?php echo $drugId; ?>">
+                                <button type="submit" name="remove_from_cart">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        
+        <!-- Clear Cart Button -->
+        <form action="" method="POST">
+            <button type="submit" name="clear_cart">Clear Cart</button>
+        </form>
+
+        <!-- Checkout Button -->
+        <form action="checkout.php" method="POST">
+            <button type="submit">Proceed to Checkout</button>
+        </form>
+    </div>
+</body>
+</html>

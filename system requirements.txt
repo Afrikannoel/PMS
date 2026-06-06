@@ -1,0 +1,89 @@
+Here’s a clear outline for both **functional** and **non-functional** requirements of the **Pharmacy Management System** (PMS) for your documentation:
+
+### **Functional Requirements**
+These define what the system will do—the core features and functions that the system must support.
+
+1. **Drug Management:**
+   - Allow the pharmacist to add new drugs to the system, specifying details such as name, price, quantity, supplier, and expiration date.
+   - Update drug information and manage stock levels for existing drugs.
+   - Track drugs by batch number for recall purposes.
+
+2. **Sales and Transactions:**
+   - Facilitate the sale of drugs, updating the database upon completion of each transaction.
+   - Provide options to apply discounts to specific transactions.
+   - Generate a receipt for each completed sale, with details on the drugs sold and total amount.
+
+3. **Inventory Alerts:**
+   - Alert the pharmacist when a drug’s stock is running low based on predefined thresholds.
+   - Provide a weekly summary of drugs that are low in stock to assist with restocking.
+
+4. **Reports Generation:**
+   - Produce reports on drugs sold (daily, weekly, monthly, and yearly).
+   - Generate reports on drugs that are low in stock.
+   - Create profit and loss reports (daily, weekly, monthly, and yearly).
+   - Generate reports on drugs in stock and those that are out of stock.
+
+5. **Supplier Management:**
+   - Store and manage details of drug suppliers, including contact information, pricing, and supply history.
+
+6. **User Management:**
+   - Support multiple users, each with unique credentials for logging in.
+   - Implement role-based access control, with specific roles such as admin, pharmacist, and cashier.
+
+7. **Customer and Prescription Management:**
+   - Maintain customer records, including personal details and prescription history.
+   - Allow pharmacists to manage and process prescriptions linked to specific customers.
+
+8. **Return and Refund Handling:**
+   - Handle drug returns, updating inventory and financial records accordingly.
+
+9. **Drug Expiry Tracking:**
+   - Track expiration dates of drugs and alert the pharmacist when a drug is nearing expiry.
+
+10. **Audit Trails:**
+    - Keep a record of all transactions and user activities in the system for auditing and accountability.
+
+11. **Tax and Financial Calculations:**
+    - Automatically calculate taxes and generate reports for tax purposes.
+
+### **Non-Functional Requirements**
+These define how the system will perform and the qualities it should have.
+
+1. **Performance:**
+   - The system should handle multiple transactions simultaneously without noticeable delays.
+   - Generate reports in real-time with minimal latency.
+
+2. **Scalability:**
+   - The system should be able to scale to accommodate more users, drugs, and branches (if needed) as the pharmacy expands.
+
+3. **Security:**
+   - Data should be securely stored, with encryption for sensitive information such as user credentials and financial data.
+   - Implement access control measures to restrict users based on their roles.
+
+4. **Usability:**
+   - The system should have an intuitive interface that is easy to navigate for users with minimal technical expertise.
+   - Provide clear feedback (e.g., confirmation messages) on successful or failed actions.
+
+5. **Reliability:**
+   - Ensure the system is highly available with minimal downtime.
+   - Include backup and recovery mechanisms to prevent data loss.
+
+6. **Maintainability:**
+   - The system should be easy to maintain, with clear documentation for future updates and modifications.
+   - Ensure the system is modular, allowing for future enhancements without affecting the core functionality.
+
+7. **Compliance:**
+   - Ensure that the system complies with legal and industry regulations for drug handling, sales, and patient confidentiality (e.g., medical data protection standards).
+
+8. **Data Integrity:**
+   - Implement mechanisms to prevent duplicate entries and ensure accurate data is recorded for all transactions and reports.
+
+9. **Availability:**
+   - The system should be accessible during pharmacy business hours and support offline mode for local pharmacies with limited internet connectivity.
+
+10. **Interoperability:**
+    - Ensure that the system can integrate with third-party systems, such as payment gateways or external reporting tools if needed.
+
+---
+
+This outline covers both the functional capabilities and the quality attributes of the Pharmacy Management System. Does this match your vision, or would you like to modify any part?

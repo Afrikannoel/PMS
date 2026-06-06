@@ -1,0 +1,55 @@
+Since you're developing the Pharmacy Management System yourself using **PHP** and **MySQL**, here's a more personalized roadmap with estimated time and effort:
+
+### **Phase 1: Requirements Gathering & System Design**
+- **Duration:** 1 week
+- **Key Tasks:**
+  - Finalize functional and non-functional requirements (which you've already started).
+  - Create use case diagrams and database schema for drug management, user roles, and sales.
+  - Sketch basic wireframes for the interface.
+- **Time Investment:** ~10-15 hours.
+
+### **Phase 2: Frontend Development (UI/UX)**
+- **Duration:** 2-3 weeks
+- **Key Tasks:**
+  - Set up the layout and design for the admin dashboard.
+  - Implement user forms for drug management, sales, and reports.
+  - Style the interface to match your clean, professional look.
+- **Time Investment:** ~40-60 hours.
+
+### **Phase 3: Backend Development (Core Features)**
+- **Duration:** 3-4 weeks
+- **Key Tasks:**
+  - Set up user authentication and role-based access control.
+  - Implement core features: drug management, sales (with discount options), inventory tracking, and supplier management.
+  - Create reporting features for daily/weekly/monthly sales and inventory.
+  - Implement notifications for low stock and expiring drugs.
+  - Connect frontend forms to the backend using PHP (with PDO) and MySQL.
+- **Time Investment:** ~80-100 hours.
+
+### **Phase 4: Testing & Integration**
+- **Duration:** 2-3 weeks
+- **Key Tasks:**
+  - Integrate the frontend with backend logic.
+  - Test all features (drug addition, sales, inventory alerts, user roles).
+  - Debug and ensure smooth functionality across different user roles.
+  - Conduct unit testing and performance testing.
+- **Time Investment:** ~40-60 hours.
+
+### **Phase 5: Deployment & Documentation**
+- **Duration:** 1-2 weeks
+- **Key Tasks:**
+  - Deploy the system to a live or local server.
+  - Create a simple user manual for staff and pharmacy use.
+  - Set up data backup and recovery features.
+- **Time Investment:** ~20-30 hours.
+
+---
+
+### **Total Time Estimate:**
+- **Total Development Time:** 8-11 weeks (around 2-2.5 months).
+- **Total Effort:** ~190-265 hours.
+
+### **Costs:**
+Since you're doing this yourself, the cost is mostly your time. However, if you need any tools or external services (e.g., hosting), they might add minimal costs (e.g., $100-300 for hosting and domain).
+
+This roadmap gives you a realistic time frame to work within. You can always adjust the timeline depending on how quickly you progress with each phase. Does this fit with your expectations?

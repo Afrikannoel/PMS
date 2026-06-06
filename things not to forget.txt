@@ -1,0 +1,21 @@
+on drug management add a search button ... admin dashboard
+notifications and alerts 
+create a report of drugs out of stock,,those in stock but in low quantities
+admin sector logout is still not functional
+
+
+
+the phamacist dashboard
+1. the sale transaction should update the db and inventory after every transaction.
+2. when adding drugs to cart the system should confirm the availabity of the drugs before adding them to card
+3. while checking out allow a room for adition of discounts and confirmation before completion of the transaction
+4. the reciept should be downloadable or printintable with neccesary information
+5. while recording the transaction the system should automatical use the user id of the person logged into the system
+
+
+
+
+
+
+allow sytem to credit/debit of some customer
+the daily report should also show separate figures collect with different payments methods

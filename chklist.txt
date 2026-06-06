@@ -1,0 +1,40 @@
+Awesome! Having your development environment and tools ready will make the process much smoother. Here’s a quick checklist to help you get started with the development of your Pharmacy Management System:
+
+### **Development Checklist**
+
+1. **Set Up Database:**
+   - Create the database for your Pharmacy Management System.
+   - Execute the SQL scripts to create the tables (`users`, `drugs`, `suppliers`, `sales`, `sale_items`, `inventory`, `notifications`, `reports`).
+
+2. **Backend Development (PHP):**
+   - **User Authentication:**
+     - Create login and registration functionality.
+     - Implement role-based access control.
+   - **Drug Management:**
+     - Develop functionality to add, edit, delete, and view drugs.
+   - **Sales Functionality:**
+     - Implement the sales process to allow purchasing multiple drugs.
+     - Ensure receipts are generated upon completion of sales.
+   - **Inventory Alerts:**
+     - Set up notifications for low stock and drug expiry.
+   - **Reporting:**
+     - Develop the reporting system for sales, inventory, and profits/losses.
+
+3. **Frontend Development:**
+   - Design the user interface using HTML, CSS, and JavaScript (consider using frameworks like Bootstrap for responsiveness).
+   - Create forms for user input (adding drugs, processing sales, etc.).
+   - Develop the dashboard for viewing reports and notifications.
+
+4. **Testing:**
+   - Test each feature thoroughly as you implement them.
+   - Check for user authentication, data integrity, and overall functionality.
+
+5. **Documentation:**
+   - Document your code and create a user manual for your Pharmacy Management System.
+
+6. **Deployment:**
+   - Once everything is tested and ready, deploy the system on a server for actual use.
+
+---
+
+If you encounter any challenges or have questions during the development process, just let me know! I'm here to help you. Good luck with building your system!

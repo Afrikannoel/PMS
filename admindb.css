@@ -1,0 +1,66 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("images/admin_bg.jpg"); /* Background image */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the image */
+    color: #ffffff; /* Text color */
+    margin: 0;
+    padding: 20px; /* Add padding to the top */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+}
+
+/* Title Styles */
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for better readability */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center buttons horizontally */
+    gap: 15px; /* Space between buttons */
+    margin-top: 50px; /* Add margin to separate from top */
+}
+
+/* Button Styles */
+.button {
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #ffffff; /* Button text color */
+    background-color: #007BFF; /* Button background color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline from link */
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+    width: 220px; /* Fixed button width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for buttons */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.button:active {
+    background-color: #004085; /* Even darker shade for active state */
+    transform: translateY(0); /* Remove lift effect */
+}
+
+/* Logout Button Styling */
+.button.logout {
+    background-color: #dc3545; /* Red for logout */
+}

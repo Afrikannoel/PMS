@@ -1,0 +1,121 @@
+/* Add basic styles for the body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, powderblue, pink);
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the background */
+}
+
+/* Main container styling */
+.container {
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Maximum width for larger screens */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Space around content */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque white background for better readability */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow for more depth */
+}
+
+/* Header styling */
+h1, h2 {
+    color: #333; /* Darker text color for headers */
+    margin-bottom: 20px; /* Space below headers */
+}
+
+/* Form styling */
+form {
+    margin-bottom: 20px; /* Space below forms */
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="number"],
+select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px; /* Padding inside input fields */
+    margin-bottom: 10px; /* Space below input fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Slightly rounded corners */
+    font-size: 16px; /* Larger font size for better readability */
+}
+
+/* Button styling */
+button {
+    padding: 10px 15px; /* Padding inside buttons */
+    background-color: #ff69b4; /* Pink button color */
+    color: #fff; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth background color and transform transition */
+    font-size: 16px; /* Button text size */
+}
+
+button:hover {
+    background-color: #ff1493; /* Darker pink on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+/* Table styling */
+table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Remove spacing between cells */
+    margin-bottom: 20px; /* Space below tables */
+}
+
+th, td {
+    padding: 12px; /* Space inside cells */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Light border below each row */
+}
+
+th {
+    background-color: #f2f2f2; /* Light gray background for headers */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: calc(100% - 10px); /* Adjust input width on smaller screens */
+    }
+    
+    button {
+        width: 100%; /* Full width buttons on smaller screens */
+    }
+
+    h1, h2 {
+        font-size: 1.5em; /* Smaller headers on mobile */
+    }
+}
+.navigation {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically (if needed) */
+    padding: 10px; /* Add some padding around the buttons */
+    position: absolute; /* Position it at the top of the page */
+    top: 10px; /* Distance from the top */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Offset for exact centering */
+    width: 100%; /* Full width to prevent overflow */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.button {
+    margin: 0 10px; /* Space between buttons */
+    padding: 10px 15px; /* Padding for buttons */
+    background-color: #007BFF; /* Button color */
+    color: white; /* Button text color */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+

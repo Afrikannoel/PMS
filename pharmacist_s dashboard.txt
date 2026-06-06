@@ -1,0 +1,45 @@
+For the pharmacist's dashboard, the design and layout should focus on simplicity and efficiency since the pharmacist will need quick access to key functions while managing daily tasks like sales, inventory, and alerts. Here's a suggested breakdown of the features and layout:
+
+### 1. **Quick Overview (Dashboard Summary)**
+   - **Sales Summary**: Display a quick summary of today's sales (total amount, number of sales made, etc.).
+   - **Inventory Alerts**: A section that highlights low-stock or out-of-stock drugs.
+   - **Recent Transactions**: List of recent sales transactions with details (time, drugs sold, total amount).
+
+### 2. **Sales Section**
+   - **Search and Add Drugs to Cart**: A search bar to quickly look up drugs by name or batch number. Allow the pharmacist to add multiple drugs to a "cart" for checkout.
+   - **Apply Discounts**: Option to apply discounts to sales if needed.
+   - **Checkout**: Finalize the transaction and print the receipt. It should automatically update the inventory.
+   - **Transaction History**: A button to view the history of sales for the day or week.
+
+### 3. **Inventory Management**
+   - **View Inventory**: A section to quickly access the current inventory and check stock levels.
+   - **Restock Drugs**: A simple form to update quantities when new stock arrives.
+   - **Expired Drugs**: A list of expired drugs with the option to remove them from stock.
+
+### 4. **Supplier Management**
+   - **Order Requests**: If the stock is low, the system can generate supplier order requests that the pharmacist can approve or reject.
+   - **Supplier Contact**: Direct access to supplier information to quickly reach out for restocking.
+
+### 5. **Reports**
+   - **Daily Sales Report**: Generate and view sales reports for the day, showing total sales, profits, and discounts applied.
+   - **Inventory Report**: Generate reports on current stock levels, low stock, and out-of-stock items.
+
+### 6. **Notifications**
+   - **Stock Alerts**: Notifications or badges indicating when certain drugs are running low.
+   - **Expiry Alerts**: Warnings for drugs that are about to expire.
+
+### Suggested Layout:
+- **Left Sidebar**: 
+  - Links to "Sales", "Inventory", "Suppliers", "Reports", and "Notifications".
+- **Main Content Area**: 
+  - Dashboard summary on top (Sales, Inventory, Alerts).
+  - Below that, a form for adding drugs to a cart, with the current transaction displayed.
+- **Top Navigation Bar**: 
+  - Quick search, profile settings, and a "Logout" button.
+
+### UI Design Tips:
+- **Color Scheme**: Use a professional yet vibrant color scheme, like blues and greys, with accent colors for alerts (e.g., red for low stock).
+- **Buttons and Icons**: Make the buttons for key actions (add to cart, checkout, etc.) prominent. Use clear, intuitive icons for quick access to common features.
+- **Responsiveness**: Ensure the dashboard is responsive and easy to navigate on both desktops and tablets, as pharmacists may use different devices.
+
+This layout will help streamline the pharmacist’s workflow and ensure that they can perform all critical tasks efficiently.

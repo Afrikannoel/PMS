@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #808080, #007BFF); /* Gradient from grey to blue */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: auto;
+}
+
+.container {
+    width: 100%; /* Full width for better printing */
+    max-width: 1200px; /* Maximum width for larger screens */
+    margin: 20px auto; /* Centering with a bit of margin */
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px; /* Spacing between heading and table */
+}
+
+table {
+    width: 100%; /* Full width of the container */
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 12px; /* Increased padding for readability */
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 100%; /* Full width for printing */
+        max-width: none; /* Remove max width */
+        box-shadow: none; /* Remove shadow for printing */
+    }
+    table {
+        page-break-inside: auto; /* Allow page breaks within the table */
+    }
+    th, td {
+        padding: 10px; /* Padding adjustments for print */
+    }
+}
