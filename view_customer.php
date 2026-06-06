@@ -149,8 +149,10 @@ $total_pages = ceil($total_sales_count / $limit);
                             <td><?php echo $sale['sale_date']; ?></td>
                             <td><?php echo $sale['payment_method']; ?></td>
                             <td>
-                                <a href="view_sale.php?sale_id=<?php echo $sale['sale_id']; ?>" class="btn">View Sale</a>
-                                <a href="edit_sale.php?sale_id=<?php echo $sale['sale_id']; ?>" class="btn">Edit Sale</a>
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                <a href="view_sale2.php?sale_id=<?php echo $sale['sale_id']; ?>" class="btn">View Sale</a>
+                                <a href="edit_sale2.php?sale_id=<?php echo $sale['sale_id']; ?>" class="btn">Edit Sale</a>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>

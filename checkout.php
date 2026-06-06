@@ -58,12 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     unset($_SESSION['cart']);
     
     // Store transaction details in session
-    $_SESSION['receipt'] = [
-        'cart' => $cart,
-        'total_amount' => $totalAmountAfterDiscount,
-        'payment_method' => $paymentMethod,
-        'discount' => $discount
-    ];
+$_SESSION['receipt'] = [
+    'sale_id' => $saleId,
+    'cart' => $cart,
+    'total_amount' => $totalAmount,
+    'discount' => $discount,
+    'final_total' => $totalAmountAfterDiscount,
+    'payment_method' => $paymentMethod
+];
 
     header('Location: receipt.php'); // Redirect to the receipt page
     exit();

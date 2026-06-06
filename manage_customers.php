@@ -49,10 +49,12 @@ $customers = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo htmlspecialchars($customer['address']); ?></td>
                             <td><?php echo htmlspecialchars($customer['customer_description']); ?></td>
                             <td>
+                            <div style="display: flex; gap: 20px; align-items: center;">
                                 <a href="view_customer.php?customer_id=<?php echo $customer['customer_id']; ?>" class="btn">View</a>
                                 <a href="edit_customer.php?customer_id=<?php echo $customer['customer_id']; ?>" class="btn">Edit</a>
                                 <a href="delete_customer.php?customer_id=<?php echo $customer['customer_id']; ?>" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</a>
-                            </td>
+                            </div>
+                          </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

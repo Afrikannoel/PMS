@@ -188,11 +188,15 @@ if (isset($_POST['checkout'])) {
             ]);
         }
 
-        // Store receipt in session for the receipt page
-        $_SESSION['receipt'] = $receipt;
+        // Add sale ID and final amount to the receipt data
+            $receipt['sale_id'] = $saleId;
+            $receipt['final_total'] = $finalAmount;
 
-        // Clear the cart after successful checkout
-        unset($_SESSION['cart']);
+            // Store receipt in session for the receipt page
+            $_SESSION['receipt'] = $receipt;
+
+            // Clear the cart after successful checkout
+            unset($_SESSION['cart']);
 
         // Redirect to receipt page
         header('Location: receipt.php');
@@ -254,6 +258,7 @@ if ($searchTerm) {
                 <tr>
                     <th>Drug Name</th>
                     <th>Description</th>
+                    <th>Unit Price</th>
                     <th>Batch Number</th>
                     <th>Expiry Date</th>
                     <th>Quantity in Stock</th>
@@ -266,6 +271,7 @@ if ($searchTerm) {
                         <tr>
                             <td><?php echo htmlspecialchars($drug['drug_name']); ?></td>
                             <td><?php echo htmlspecialchars($drug['description']); ?></td>
+                            <td><?php echo htmlspecialchars(number_format($drug['selling_price'], 2)); ?></td>
                             <td><?php echo htmlspecialchars($drug['batch_number']); ?></td>
                             <td><?php echo htmlspecialchars($drug['expiry_date']); ?></td>
                             <td><?php echo htmlspecialchars($drug['quantity_in_stock']); ?></td>
@@ -280,7 +286,7 @@ if ($searchTerm) {
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="6">No drugs found.</td>
+                        <td colspan="7">No drugs found.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
@@ -343,6 +349,8 @@ if ($searchTerm) {
     <!-- Display the balance -->
     <label for="balance">Balance:</label>
     <input type="text" name="balance" value="<?php echo htmlspecialchars($balance); ?>" readonly>
+<br>
+<br>
 
     <div>
         <label>
@@ -355,7 +363,7 @@ if ($searchTerm) {
             <input type="radio" name="payment_method" value="Card" required> Card
         </label>
     </div>
-
+<br>
     <button type="submit" name="checkout">Confirm and Complete Transaction</button>
     <button type="submit" name="clear_cart">Clear Cart</button>
 </form>

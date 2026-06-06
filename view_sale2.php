@@ -110,9 +110,9 @@ $customer_contact = !empty($sale['customer_contact']) ? $sale['customer_contact'
         <?php endif; ?>
 
         <div class="buttons">
-            <a href="manage_daily_sales.php" class="btn">Go Back</a>
+            <a href="manage_customers.php" class="btn">Go Back</a>
             <button onclick="window.print()" class="btn print-btn">Print</button>
         </div>
-    </div>
+    </div>|
 </body>
 </html>

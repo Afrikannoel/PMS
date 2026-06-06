@@ -1,121 +1,184 @@
-/* Add basic styles for the body */
+Use this cleaner version. It keeps the powderblue-to-pink theme, removes the noisy comments, makes spacing more consistent, and fixes the navigation so it does not float awkwardly over the page content.
+
+```css
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, powderblue, pink);
-    background-size: cover; /* Cover the entire page */
-    background-position: center; /* Center the background */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    color: #222;
 }
 
-/* Main container styling */
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.button,
+button {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.button:hover,
+button:hover {
+    background-color: #0056b3;
+}
+
 .container {
-    width: 100%; /* Full width */
-    max-width: 1200px; /* Maximum width for larger screens */
-    margin: 0 auto; /* Center the container */
-    padding: 20px; /* Space around content */
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque white background for better readability */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow for more depth */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: rgba(255, 255, 255, 0.94);
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
 }
 
-/* Header styling */
-h1, h2 {
-    color: #333; /* Darker text color for headers */
-    margin-bottom: 20px; /* Space below headers */
+h1,
+h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 18px;
 }
 
-/* Form styling */
+h1 {
+    text-align: center;
+}
+
 form {
-    margin-bottom: 20px; /* Space below forms */
+    margin-bottom: 18px;
 }
 
-/* Input fields styling */
 input[type="text"],
 input[type="number"],
-select {
-    width: calc(100% - 20px); /* Full width minus padding */
-    padding: 10px; /* Padding inside input fields */
-    margin-bottom: 10px; /* Space below input fields */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 4px; /* Slightly rounded corners */
-    font-size: 16px; /* Larger font size for better readability */
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font: inherit;
 }
 
-/* Button styling */
-button {
-    padding: 10px 15px; /* Padding inside buttons */
-    background-color: #ff69b4; /* Pink button color */
-    color: #fff; /* Text color */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Slightly rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth background color and transform transition */
-    font-size: 16px; /* Button text size */
+input[type="radio"] {
+    margin-right: 6px;
 }
 
-button:hover {
-    background-color: #ff1493; /* Darker pink on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
 }
 
-/* Table styling */
 table {
-    width: 100%; /* Full width */
-    border-collapse: collapse; /* Remove spacing between cells */
-    margin-bottom: 20px; /* Space below tables */
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
-th, td {
-    padding: 12px; /* Space inside cells */
-    text-align: left; /* Align text to the left */
-    border-bottom: 1px solid #ddd; /* Light border below each row */
+th,
+td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    font-size: 14px;
 }
 
 th {
-    background-color: #f2f2f2; /* Light gray background for headers */
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
 }
 
-/* Responsive adjustments */
+tr:nth-child(even) {
+    background-color: #f7fbff;
+}
+
+tr:hover {
+    background-color: #eef6ff;
+}
+
+td form {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 4px 6px 4px 0;
+}
+
+td form:last-child {
+    margin-right: 0;
+}
+
+td input[type="number"] {
+    width: 80px;
+    max-width: 100%;
+    padding: 7px;
+    margin: 0;
+}
+
+td button {
+    padding: 7px 10px;
+    white-space: nowrap;
+}
 @media (max-width: 768px) {
-    input[type="text"],
-    input[type="number"],
-    select {
-        width: calc(100% - 10px); /* Adjust input width on smaller screens */
-    }
-    
-    button {
-        width: 100%; /* Full width buttons on smaller screens */
+    body {
+        padding: 12px;
     }
 
-    h1, h2 {
-        font-size: 1.5em; /* Smaller headers on mobile */
+    .container {
+        padding: 16px;
     }
-}
-.navigation {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically (if needed) */
-    padding: 10px; /* Add some padding around the buttons */
-    position: absolute; /* Position it at the top of the page */
-    top: 10px; /* Distance from the top */
-    left: 50%; /* Center it horizontally */
-    transform: translateX(-50%); /* Offset for exact centering */
-    width: 100%; /* Full width to prevent overflow */
-    z-index: 1000; /* Ensure it stays above other elements */
+
+    button,
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    td form {
+    margin-bottom: 8px;
 }
 
-.button {
-    margin: 0 10px; /* Space between buttons */
-    padding: 10px 15px; /* Padding for buttons */
-    background-color: #007BFF; /* Button color */
-    color: white; /* Button text color */
-    text-decoration: none; /* Remove underline from links */
-    border-radius: 4px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+td form:last-child {
+    margin-bottom: 0;
 }
 
-.button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+td form input.cart-qty-input {
+    display: inline-block;
+    margin-right: 6px;
 }
-
+}

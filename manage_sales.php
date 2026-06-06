@@ -49,8 +49,6 @@ $sales = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $sale['sale_date']; ?></td>
                         <td>
                             <a href="view_sale.php?sale_id=<?php echo $sale['sale_id']; ?>" class="btn">View</a>
-                            <a href="edit_sale.php?sale_id=<?php echo $sale['sale_id']; ?>" class="btn">Edit</a>
-                            <a href="void_sale.php?sale_id=<?php echo $sale['sale_id']; ?>" class="btn delete-btn">Void</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

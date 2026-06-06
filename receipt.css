@@ -1,98 +1,130 @@
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #808080, #007BFF); /* Gradient from grey to blue */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align near the top */
-    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, powderblue, pink);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    color: #222;
 }
 
-/* Container for the receipt */
 .receipt-container {
-    background: white; /* White background for receipt */
-    padding: 20px; /* Padding for receipt content */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    width: 148mm; /* A6 width */
-    height: 210mm; /* A6 height */
-    box-sizing: border-box; /* Include padding in width and height */
-    overflow: hidden; /* Hide overflow */
-    margin: 20px; /* Margin around the receipt for spacing */
-    position: relative; /* Establish a positioning context */
+    width: 148mm;
+    min-height: 210mm;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
 }
 
-/* Print styles */
-@media print {
-    @page {
-        size: A6 portrait; /* Set the page size to A6 */
-        margin: 0; /* Remove default margin */
-    }
-
-    body {
-        background: none; /* Remove background for print */
-    }
-
-    .receipt-container {
-        margin: 0; /* Remove margin for print */
-        border: 2mm solid blue; /* Blue border */
-        overflow: hidden; /* Hide overflow */
-    }
-
-    /* Hide buttons when printing */
-    .button-group {
-        display: none; /* Hide buttons during print */
-    }
-}
-
-/* Heading styles */
 h1 {
-    text-align: center; /* Center the heading */
-    margin-bottom: 20px; /* Space below the heading */
-    color: #333; /* Dark grey color */
+    text-align: center;
+    margin: 0 0 20px;
+    color: #333;
 }
 
-/* Table styles */
+h2 {
+    margin: 20px 0 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+p {
+    margin: 8px 0;
+}
+
 .receipt-table {
-    width: 100%; /* Table width */
-    border-collapse: collapse; /* Collapse borders */
-    margin-bottom: 10px; /* Space below the table */
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    background: #fff;
 }
 
 .receipt-table th,
 .receipt-table td {
-    border: 1px solid #000; /* Border for table cells */
-    padding: 8px; /* Padding in table cells */
-    text-align: left; /* Align text to the left */
-    font-size: 14px; /* Font size for table */
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.receipt-table th {
+    background: #007bff;
+    color: #fff;
+}
+
+.receipt-table tr:nth-child(even) {
+    background: #f7fbff;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto 0;
+    flex-wrap: wrap;
+}
+
+.button-group button,
+.button-group a {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.button-group button:hover,
+.button-group a:hover {
+    background-color: #0056b3;
 }
 
 .footer {
-    text-align: center; /* Center footer text */
-    margin-top: 20px; /* Space above footer */
-    font-weight: bold; /* Bold footer text */
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
-/* Button styles */
-.button-group {
-    display: flex; /* Flexbox layout for buttons */
-    justify-content: center; /* Center buttons */
-    margin-bottom: 20px; /* Space below buttons */
-}
+@media print {
+    @page {
+        size: A5 portrait;
+        margin: 0;
+    }
 
-.button-group button {
-    width: auto; /* Button width */
-    margin: 0 5px; /* Space between buttons */
-    padding: 10px; /* Padding for buttons */
-    background-color: #007BFF; /* Button color */
-    color: white; /* Button text color */
-    border: none; /* No border */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 14px; /* Font size for buttons */
-}
+    body {
+        padding: 0;
+        background: #fff;
+    }
 
-.button-group button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    .button-group,
+    .no-print {
+        display: none;
+    }
+
+    .receipt-container {
+        width: 148mm;
+        min-height: 210mm;
+        margin: 0;
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+
+    .receipt-table th {
+        background: #f2f2f2;
+        color: #000;
+    }
 }

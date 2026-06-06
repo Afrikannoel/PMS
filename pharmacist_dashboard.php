@@ -36,7 +36,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pharmacist') {
         <div class="dashboard-card">
                 <h2>Manage Customers</h2>
                 <p>Add new customers to the system.</p>
-                <a href="add_customer.php" class="btn">Add Customer</a>
+                <a href="manage_customers.php" class="btn">Add Customer</a>
             </div>
              
           <!-- Logout -->
